@@ -1,2 +1,2 @@
-# IAmARobot123.github.io
+# IAmARobot123
 all my personal projects will be here
