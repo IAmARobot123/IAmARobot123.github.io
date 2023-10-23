@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="360" width="480">
+<path d="M0 0C100 0 380 -20 480 -20" stroke-width="80" stroke="#808080"></path>
+<path d="M0 80C100 80 380 60 480 60" stroke-width="81" stroke="#908070"></path>
+<path d="M0 160C100 160 380 140 480 140" stroke-width="81" stroke="#a08060"></path>
+<path d="M0 240C100 240 380 220 480 220" stroke-width="81" stroke="#b08050"></path>
+<path d="M0 320C100 320 380 300 480 300" stroke-width="81" stroke="#c08040"></path>
+<path d="M0 400C100 400 380 380 480 380" stroke-width="81" stroke="#e08040"></path>
+</svg>

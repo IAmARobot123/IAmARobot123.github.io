@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="60" width="60">
+<path d="M0 12L10 12L30 3L30 57L10 48L0 48Z"></path>
+<path d="M35 8C45 8 45 52 35 52" stroke="#000" stroke-width="5px" fill="#0000"></path>
+<path d="M45 8C55 8 55 52 45 52" stroke="#000" stroke-width="5px" fill="#0000"></path>
+<path d="M5 5L55 55" stroke="#000" stroke-width="8px" fill="#0000"></path>
+</svg>
