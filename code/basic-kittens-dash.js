@@ -1,5 +1,5 @@
 
-let mouseX = 0, mouseY = 0, down = [];
+let mouseX = 0, mouseY = 0, down = [], pause;
 let images, playingNow, volume = 1;
 const characterCostumes = [
     5, 9, 0, 10, 11
@@ -82,6 +82,7 @@ loadImages(['https://iamarobot123.github.io/images/character.svg',
     'https://iamarobot123.github.io/images/character3.svg',
     'https://iamarobot123.github.io/images/character4.svg',
     'https://iamarobot123.github.io/images/character5.svg',
+    'https://iamarobot123.github.io/images/pause.svg',
 ], function (imglist) {
     images = imglist;
     loadAudio('https://iamarobot123.github.io/audios/1251734_Super-Cat-Tales-Ghost-Hous.mp3',
@@ -229,10 +230,8 @@ function startPlaying() {
     drawAll(images);
 
     function repeat() {
-        if (!playingNow) {
-            return;
-        }
-        cycle--;
+        if(!pause) {
+           cycle--;
         if (cycle == 0) {
             let c;
             if(Math.random() > 0.2) {
@@ -276,8 +275,11 @@ function startPlaying() {
                     }, 1500)
                 }, 1000)
                 cycle = Math.round(Math.random() * 50 + 120);
-            }
-
+            } 
+        }
+        if (!playingNow) {
+            return;
+        }
         }
         let shake = 0;
         for (m = 0; m < balls.length; m++) {
@@ -399,6 +401,15 @@ function startPlaying() {
     }
 
     function drawAll(images) {
+        ctx.drawImage(images[12], 10, 10, 30, 30);
+        if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
+            if(pause == true) {
+                pause == false;
+            } else {
+                pause == true;
+            }
+            down[0] = false;
+         }
         if (!playingNow || alive < 4) {
             return;
         }
