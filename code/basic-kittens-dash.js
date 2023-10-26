@@ -484,7 +484,7 @@ function startPlaying() {
                     if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
                         e();
                     }
-                    if(mouseX > 150 && mouseX < 330 && mouseY > 200 && mouseY < 220 && down[0]) {
+                    if(mouseX > 150 && mouseX < 330 && mouseY > 200 && mouseY < 240 && down[0]) {
                         playingNow = false;
                         e();
                     }
