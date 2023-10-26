@@ -231,75 +231,75 @@ function startPlaying() {
 
     function repeat() {
         if(!pause) {
-           cycle--;
-        if (cycle == 0) {
-            let c;
-            if(Math.random() > 0.2) {
-                if (Math.random() < 0.5) {
-                    c = {
-                        active: false,
-                        type: 'bounce',
-                        dir: 'left',
-                        x: -60,
-                        y: 20,
-                        str: 0,
-                        speed: 5 + Math.random() * 3,
-                    };
+            cycle--;
+            if (cycle == 0) {
+                let c;
+                if(Math.random() > 0.2) {
+                    if (Math.random() < 0.5) {
+                        c = {
+                            active: false,
+                            type: 'bounce',
+                            dir: 'left',
+                            x: -60,
+                            y: 20,
+                            str: 0,
+                            speed: 5 + Math.random() * 3,
+                        };
+                    } else {
+                        c = {
+                            active: false,
+                            type: 'basic',
+                            dir: 'left',
+                            x: -60,
+                            speed: 5 + Math.random() * 3,
+                        };
+                    }
+        
+                    if (Math.random() > 0.5) {
+                        c.dir = 'right';
+                        c.x = 960;
+                    }
+        
+                    balls.push(c);
+                    cycle = Math.round(Math.random() * 100 + 200);
+                    setTimeout(function () {
+                        balls[balls.indexOf(c)].active = true;
+                    }, 1000)
                 } else {
-                    c = {
-                        active: false,
-                        type: 'basic',
-                        dir: 'left',
-                        x: -60,
-                        speed: 5 + Math.random() * 3,
-                    };
-                }
-    
-                if (Math.random() > 0.5) {
-                    c.dir = 'right';
-                    c.x = 960;
-                }
-    
-                balls.push(c);
-                cycle = Math.round(Math.random() * 100 + 200);
-                setTimeout(function () {
-                    balls[balls.indexOf(c)].active = true;
-                }, 1000)
-            } else {
-                const num = Math.floor(Math.random() * 11.9999999999999999)
-                ground[num] = 'alert';
-                setTimeout(function() {
-                    ground[num] = 1;  
+                    const num = Math.floor(Math.random() * 11.9999999999999999)
+                    ground[num] = 'alert';
                     setTimeout(function() {
-                        ground[num] = 0;
-                    }, 1500)
-                }, 1000)
-                cycle = Math.round(Math.random() * 50 + 120);
-            } 
-        }
-        if (!playingNow) {
-            return;
-        }
-        }
-        let shake = 0;
-        for (m = 0; m < balls.length; m++) {
-            const s = controlBall(m);
-            if (s) {
-                shake += s;
+                        ground[num] = 1;  
+                        setTimeout(function() {
+                            ground[num] = 0;
+                        }, 1500)
+                    }, 1000)
+                    cycle = Math.round(Math.random() * 50 + 120);
+                } 
             }
-        }
-        shakeEffect.str = shake;
-        for (n = 0; n < 12; n++) {
-            controlCharacter(n);
-        }
-        if (alive < 4) {
-            armyDeadFunction();
-            return;
-        } else {
-            score += alive / 250;
-            setTimeout(repeat, 20);
-        }
-
+    
+            if (!playingNow) {
+                return;
+            }
+            }
+                let shake = 0;
+            for (m = 0; m < balls.length; m++) {
+                const s = controlBall(m);
+                if (s) {
+                    shake += s;
+                }
+            }
+            shakeEffect.str = shake;
+            for (n = 0; n < 12; n++) {
+                controlCharacter(n);
+            }
+            if (alive < 4) {
+                armyDeadFunction();
+                return;
+            } else {
+                score += alive / 250;
+                setTimeout(repeat, 20);
+            }
     }
 
     function controlBall(n) {
