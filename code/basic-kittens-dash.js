@@ -468,9 +468,9 @@ function startPlaying() {
         ctx.drawImage(images[12], 10, 10, 30, 30);
         if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
             if(pause == true) {
-                pause == false;
+                pause = false;
             } else {
-                pause == true;
+                pause = true;
             }
             down[0] = false;
          }
