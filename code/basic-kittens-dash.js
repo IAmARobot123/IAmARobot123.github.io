@@ -293,13 +293,13 @@ function startPlaying() {
             for (n = 0; n < 12; n++) {
                 controlCharacter(n);
             }
-            if (alive < 4) {
-                armyDeadFunction();
-                return;
-            } else {
-                score += alive / 250;
-                setTimeout(repeat, 20);
-            }
+        }
+        if (alive < 4) {
+            armyDeadFunction();
+            return;
+        } else {
+            score += alive / 250;
+            setTimeout(repeat, 20);
         }
     }
 
@@ -401,7 +401,7 @@ function startPlaying() {
         return false;
     }
 
-    function drawAll(images) {
+    async function drawAll(images) {
         if (!playingNow || alive < 4) {
             return;
         }
@@ -468,11 +468,19 @@ function startPlaying() {
         ctx.fillText(Math.trunc(score), 950 - ctx.measureText(Math.trunc(score)).width, 40);
         ctx.drawImage(images[12], 10, 10, 30, 30);
         if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
-            if(pause == true) {
-                pause = false;
-            } else {
-                pause = true;
-            }
+            pause = true;
+            down[0] = false;
+            const p = new Promise(function(end, error) {
+                function r() {
+                    if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
+                        end();
+                    }
+                    requestAnimationFrame(r);
+                }
+                r();
+            })
+            await p;
+            pause = false;
             down[0] = false;
          }
 
