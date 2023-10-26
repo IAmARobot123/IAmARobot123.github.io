@@ -401,15 +401,6 @@ function startPlaying() {
     }
 
     function drawAll(images) {
-        ctx.drawImage(images[12], 10, 10, 30, 30);
-        if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
-            if(pause == true) {
-                pause == false;
-            } else {
-                pause == true;
-            }
-            down[0] = false;
-         }
         if (!playingNow || alive < 4) {
             return;
         }
@@ -474,6 +465,15 @@ function startPlaying() {
 
         ctx.font = '32px helvetica';
         ctx.fillText(Math.trunc(score), 950 - ctx.measureText(Math.trunc(score)).width, 40);
+        ctx.drawImage(images[12], 10, 10, 30, 30);
+        if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
+            if(pause == true) {
+                pause == false;
+            } else {
+                pause == true;
+            }
+            down[0] = false;
+         }
 
         requestAnimationFrame(function () {
             drawAll(images);
