@@ -2,7 +2,7 @@
 let mouseX = 0, mouseY = 0, down = [];
 let images, playingNow, volume = 1;
 const characterCostumes = [
-    0, 5
+    5, 9, 0, 10, 11
 ]
 
 if (!localStorage.getItem('character')) {
@@ -58,6 +58,9 @@ loadImages(['https://iamarobot123.github.io/images/character.svg',
     'https://iamarobot123.github.io/images/audio.svg',
     'https://iamarobot123.github.io/images/notaudio.svg',
     'https://iamarobot123.github.io/images/background.svg',
+    'https://iamarobot123.github.io/images/character3.svg',
+    'https://iamarobot123.github.io/images/character4.svg',
+    'https://iamarobot123.github.io/images/character5.svg',
 ], function (imglist) {
     images = imglist;
     loadAudio('https://iamarobot123.github.io/audios/1251734_Super-Cat-Tales-Ghost-Hous.mp3',
