@@ -298,7 +298,9 @@ function startPlaying() {
             armyDeadFunction();
             return;
         } else {
-            score += alive / 250;
+            if(!pause) {
+                score += alive / 250;
+            }
             setTimeout(repeat, 20);
         }
     }
@@ -468,12 +470,23 @@ function startPlaying() {
         ctx.fillText(Math.trunc(score), 950 - ctx.measureText(Math.trunc(score)).width, 40);
         ctx.drawImage(images[12], 10, 10, 30, 30);
         if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
+            ctx.globalAlpha = 0.4;
+            ctx.fillRect(0, 0, 960, 720);
+            ctx.globalAlpha = 1;
+            ctx.font = '44px helvetica';
+            ctx.fillText('Pause', 480 - ctx.measureText('Pause').width / 2, 150);
+            ctx.font = '30px helvetica';
+            ctx.fillText('/ Return to the main menu /', 480 - ctx.measureText('/ Return to the main menu /').width / 2, 220);
             pause = true;
             down[0] = false;
-            const p = new Promise(function(end, error) {
+            const p = new Promise(function(e) {
                 function r() {
                     if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
-                        end();
+                        e();
+                    }
+                    if(mouseX > 150 && mouseX < 330 && mouseY > 200 && mouseY < 220 && down[0]) {
+                        playingNow = false;
+                        e();
                     }
                     requestAnimationFrame(r);
                 }
