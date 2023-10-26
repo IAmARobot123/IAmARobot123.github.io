@@ -18,10 +18,30 @@ document.addEventListener('mousemove', function (e) {
 
 document.addEventListener('mousedown', function (e) {
     down[e.button] = true;
-})
+}, false)
 document.addEventListener('mouseup', function (e) {
     down[e.button] = false;
-})
+}, false)
+
+document.addEventListener('keydown', function (e) {
+    if (playingNow) {
+        if (e.keyCode == 32) {
+            down[0] = true;
+        } else if (e.keyCode == 13) {
+            down[2] = true;
+        }
+    }
+}, false)
+
+document.addEventListener('keyup', function (e) {
+        if (playingNow) {
+        if (e.keyCode == 32) {
+            down[0] = false;
+        } else if (e.keyCode == 13) {
+            down[2] = false;
+        }
+    }
+}, false)
 
 document.addEventListener('touchmove', function (e) {
     mouseX = (e.targetTouches[0].clientX - canvas.offsetLeft) / canvas.clientWidth * 960;
@@ -40,14 +60,15 @@ document.addEventListener('touchstart', function (e) {
     }
     mouseX = (e.targetTouches[0].clientX - canvas.offsetLeft) / canvas.clientWidth * 960;
     mouseY = (e.targetTouches[0].clientY - canvas.offsetTop) / canvas.clientHeight * 720;
-})
+}, false)
+
 document.addEventListener('touchend', function (e) {
     down = [false, false, false, false]
-})
+}, false)
 
 document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
-})
+}, false)
 
 loadImages(['https://iamarobot123.github.io/images/character.svg',
     'https://iamarobot123.github.io/images/block.svg',
