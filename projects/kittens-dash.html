@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>army</title>
+    <link href="https://iamarobot123.github.io/styles/kittens-dash-basic.css" rel="stylesheet" />
+</head>
+
+<body>
+    <canvas id="canvas" height="720px" width="960px">
+        <h1>
+            Error
+        </h1>
+        <p>
+            Your browser doesn't support HTML5 canvas.
+        </p>
+    </canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.font = '32px helvetica';
+        ctx.fillText('Loading...', 480 - ctx.measureText('Loading...').width / 2, 360);
+    </script>
+        <script src="https://iamarobot123.github.io/code/basic-kittens-dash.js">
+        </script>
+</body>
+
+</html>
