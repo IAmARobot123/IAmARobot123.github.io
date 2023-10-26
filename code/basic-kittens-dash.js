@@ -281,7 +281,7 @@ function startPlaying() {
             if (!playingNow) {
                 return;
             }
-            }
+            
                 let shake = 0;
             for (m = 0; m < balls.length; m++) {
                 const s = controlBall(m);
@@ -300,6 +300,7 @@ function startPlaying() {
                 score += alive / 250;
                 setTimeout(repeat, 20);
             }
+        }
     }
 
     function controlBall(n) {
