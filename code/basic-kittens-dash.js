@@ -485,11 +485,15 @@ function startPlaying() {
                 function r() {
                     ctx.drawImage(c, 0, 0);
                     if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
+                        pause = false;
                         e();
+                        return;
                     }
                     if(mouseX > 300 && mouseX < 660 && mouseY > 190 && mouseY < 250 && down[0]) {
+                        pause = false;
                         playingNow = false;
                         e();
+                        return;
                     }
                     down[0] = false;
                     requestAnimationFrame(r);
