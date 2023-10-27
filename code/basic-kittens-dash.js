@@ -479,15 +479,19 @@ function startPlaying() {
             ctx.fillText('/ Return to the main menu /', 480 - ctx.measureText('/ Return to the main menu /').width / 2, 220);
             pause = true;
             down[0] = false;
+            const c = new OffscreenCanvas(960, 720);
+            c.getContext('2d').drawImage(canvas, 0, 0);
             const p = new Promise(function(e) {
                 function r() {
+                    canvas.drawImage(c, 0, 0);
                     if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
                         e();
                     }
-                    if(mouseX > 150 && mouseX < 330 && mouseY > 200 && mouseY < 240 && down[0]) {
+                    if(mouseX > 300 && mouseX < 660 && mouseY > 190 && mouseY < 250 && down[0]) {
                         playingNow = false;
                         e();
                     }
+                    down[0] = false;
                     requestAnimationFrame(r);
                 }
                 r();
