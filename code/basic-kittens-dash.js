@@ -483,7 +483,7 @@ function startPlaying() {
             c.getContext('2d').drawImage(canvas, 0, 0);
             const p = new Promise(function(e) {
                 function r() {
-                    canvas.drawImage(c, 0, 0);
+                    ctx.drawImage(c, 0, 0);
                     if(mouseX > 10 && mouseX < 40 && mouseY > 10 && mouseY < 40 && down[0]) {
                         e();
                     }
