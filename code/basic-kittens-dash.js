@@ -49,17 +49,13 @@ document.addEventListener('touchmove', function (e) {
 }, false)
 
 document.addEventListener('touchstart', function (e) {
-    if(playingNow) {
-        if(e.targetTouches[0].clientY > 660) {
+        mouseX = (e.targetTouches[0].clientX - canvas.offsetLeft) / canvas.clientWidth * 960;
+        mouseY = (e.targetTouches[0].clientY - canvas.offsetTop) / canvas.clientHeight * 720;
+        if(mouseY > 660 && playingNow) {
             down[2] = true;
         } else {
             down[0] = true;
         }
-    } else {
-        down[0] = true;
-    }
-    mouseX = (e.targetTouches[0].clientX - canvas.offsetLeft) / canvas.clientWidth * 960;
-    mouseY = (e.targetTouches[0].clientY - canvas.offsetTop) / canvas.clientHeight * 720;
 }, false)
 
 document.addEventListener('touchend', function (e) {
