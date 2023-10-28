@@ -21,9 +21,25 @@
         const ctx = canvas.getContext('2d');
         ctx.font = '32px helvetica';
         ctx.fillText('Loading...', 480 - ctx.measureText('Loading...').width / 2, 360);
+        function r() {
+            if (window.innerHeight * canvas.width > window.innerWidth * canvas.height) {
+                canvas.style.marginLeft = 0 + 'px';
+                canvas.style.marginTop = (window.innerHeight - (window.innerWidth * (canvas.height / canvas.width))) / 2 + 'px';
+                canvas.style.width = window.innerWidth + 'px';
+                canvas.style.height = window.innerWidth * (canvas.height / canvas.width) + 'px';
+            } else {
+                canvas.style.marginLeft = (window.innerWidth - (window.innerHeight * (canvas.width / canvas.height))) / 2 + 'px';
+                canvas.style.marginTop = 0 + 'px';
+                canvas.style.width = window.innerHeight * (canvas.width / canvas.height) + 'px';
+                canvas.style.height = window.innerHeight + 'px';
+            }
+            requestAnimationFrame(r);
+        }
+        console.log(canvas.marginLeft = 30);
+        r();
     </script>
-        <script src="https://iamarobot123.github.io/code/basic-kittens-dash.js">
-        </script>
+    <script src="https://iamarobot123.github.io/code/basic-kittens-dash.js">
+    </script>
 </body>
 
 </html>
