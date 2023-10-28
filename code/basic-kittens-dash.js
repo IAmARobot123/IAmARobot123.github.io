@@ -100,6 +100,7 @@ function background() {
 
 function drawMainMenu() {
     let cursor = 'inherit';
+    let message = '';
     if (!playingNow) {
         background();
         ctx.font = '44px helvetica';
@@ -113,6 +114,7 @@ function drawMainMenu() {
         ctx.drawImage(images[3], 450, 330, 60, 60);
         if (mouseX > 430 && mouseX < 530 && mouseY > 310 && mouseY < 410) {
             cursor = 'pointer';
+            message = 'Play';
             if (down[0] && !playingNow) {
                 startPlaying();
             }
@@ -121,6 +123,7 @@ function drawMainMenu() {
         ctx.drawImage(images[4], 576, 336, 48, 48);
         if (mouseX > 560 && mouseX < 640 && mouseY > 320 && mouseY < 400) {
             cursor = 'pointer';
+            message = 'Reset highscore';
             if (down[0] && !playingNow) {
                 localStorage.removeItem('hs');
             }
@@ -138,6 +141,7 @@ function drawMainMenu() {
 
         if (mouseX > 320 && mouseX < 400 && mouseY > 320 && mouseY < 400) {
             cursor = 'pointer';
+            message = 'Audio on/off';
             if (down[0] && !playingNow) {
                 if (volume) {
                     volume = 0;
@@ -150,6 +154,7 @@ function drawMainMenu() {
         drawCharacter(images[characterCostumes[localStorage.getItem('character')]], { avoid: 330, y: 275 });
         if (mouseX > 330 && mouseX < 375 && mouseY > 275 && mouseY < 320) {
             cursor = 'pointer';
+            message = 'Change character';
             if (down[0] && !playingNow) {
                 console.log(localStorage.getItem('character'))
                 localStorage.setItem('character', localStorage.getItem('character') * 1 + 1)
@@ -160,6 +165,8 @@ function drawMainMenu() {
         down[0] = false;
     }
     canvas.style.cursor = cursor;
+    ctx.font = '20px helvetica';
+    ctx.fillText(message, 20, 700);
     requestAnimationFrame(drawMainMenu);
 }
 
