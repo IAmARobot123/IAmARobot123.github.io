@@ -181,9 +181,11 @@ async function playAudio(audio) {
         if (audio.currentTime >= 129.488936) {
             setTimeout(function() {
                 audio.currentTime = 0;
+                playAudio(audio);
             }, 3000)
+        } else {
+            playAudio(audio);
         }
-        playAudio(audio);
     }, 100)
 }
 
