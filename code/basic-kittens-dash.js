@@ -182,7 +182,8 @@ async function playAudio(audio) {
             setTimeout(function() {
                 audio.currentTime = 0;
             }, 3000)
-        playAudio(audio)
+        }
+        playAudio(audio);
     }, 100)
 }
 
