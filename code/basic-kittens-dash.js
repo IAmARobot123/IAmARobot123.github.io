@@ -167,7 +167,7 @@ function drawMainMenu() {
 }
 
 async function playAudio(audio) {
-    // thanks to @thenanercat
+    // thanks to @thenanercat, don't forget it!!
     audio.volume = volume;
     const p = audio.play();
     p.catch(function () {
@@ -178,9 +178,10 @@ async function playAudio(audio) {
     });
     await p;
     setTimeout(function () {
-        if (audio.currentTime > 34.9) {
-            audio.currentTime = 7.56;
-        }
+        if (audio.currentTime >= 129.488936) {
+            setTimeout(function() {
+                audio.currentTime = 0;
+            }, 3000)
         playAudio(audio)
     }, 100)
 }
