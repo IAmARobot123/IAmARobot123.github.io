@@ -8,7 +8,7 @@ butt.onclick = function() {
         eval(code.value).length;
         circles = eval(code.value);
     } catch(e) {
-        code.value = 'Uncaught' + e;
+        code.value = code.value + '\r Uncaught' + e;
     }
 }
 
