@@ -1,3 +1,3 @@
-export function random() {
+export default function random() {
   console.log('yupiiii')
 }
