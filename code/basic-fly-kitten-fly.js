@@ -1,5 +1,5 @@
 console.log('holi');
-//import random from 'https://iamarobot123.github.io/code/random.js';
+import random from 'https://iamarobot123.github.io/code/random.js';
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let images;
