@@ -1,5 +1,5 @@
 console.log('holi');
-import random from 'https://iamarobot123.github.io/code/random.js';
+// import random from 'https://iamarobot123.github.io/code/random.js';
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let images;
@@ -144,12 +144,8 @@ function afterLoad(i) {
 let g;
 
 async function loadExteriorFunction() {
-    const script = import('something.mjs');
-    script.type = 'module';
-    script.src = 'something.js';
-    return new Promise(function(end, error) {
-        script.addEventListener('load', end, false);
-    })
+    return import('something.mjs');
+
 }
 async function mainMenu() {
     function drawLevelButtons() {
