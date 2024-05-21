@@ -36,10 +36,13 @@
             request.onupgradeneeded = function(e) {
                 console.log('upgrade')
                 db = request.result;
-                db.deleteObjectStore('customers');
-                const objectStore = db.createObjectStore('customers', {
-                    keyPath: 'key',
-                })
+                try {
+                    db.deleteObjectStore('customers');
+                    const objectStore = db.createObjectStore('customers', {
+                        keyPath: 'key',
+                    })
+                } catch {
+                }
             }
             function updateHandler() {
                 const transaction = db.transaction(['customers'], 'readwrite')
