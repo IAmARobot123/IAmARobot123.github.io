@@ -20,7 +20,7 @@
         </div>
         <script>
             let db;
-            const request = indexedDB.open('myDatabase', 6)
+            const request = indexedDB.open('myDatabase', 7)
             request.onsuccess = function() {
                 db = request.result;
                 document.getElementById('done').onclick = updateHandler;
