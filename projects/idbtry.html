@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div>
+            <p>
+                REGISTRATION TRIAL
+            </p>
+            <p>
+                Name: <input type="text" id="name">
+            </p>
+            <p>
+                Surname: <input type="text" id="surname">
+            </p>
+            <button id="done">done</button><button id="delete">delete</button>
+            <hr />
+            <span id="log"></span>
+        </div>
+        <script>
+            let db;
+            const request = indexedDB.open('myDatabase', 6)
+            request.onsuccess = function() {
+                db = request.result;
+                document.getElementById('done').onclick = updateHandler;
+                const transaction = db.transaction(['customers'], 'readwrite')
+                const objectStore = transaction.objectStore('customers');
+                objectStore.get('P').onsuccess = function(e) {
+                    document.getElementById('log').innerHTML = '';
+                    e.target.result?.data.forEach(function({name: name, surname: surname}) {
+                        document.getElementById('log').innerHTML += name + ' ' + surname + ', '
+                    })
+                }
+            }
+            request.onupgradeneeded = function(e) {
+                console.log('upgrade')
+                db = request.result;
+                db.deleteObjectStore('customers');
+                const objectStore = db.createObjectStore('customers', {
+                    keyPath: 'key',
+                })
+            }
+            function updateHandler() {
+                const transaction = db.transaction(['customers'], 'readwrite')
+                const objectStore = transaction.objectStore('customers');
+                let before;
+                objectStore.get('P').onsuccess = function(e) {
+                    before = e.target.result?.data;
+                    if(e.target.result?.data?.[0] === undefined) {
+                        before = [{
+                            name: document.getElementById('name').value,
+                            surname: document.getElementById('surname').value, 
+                        }];
+                    } else {
+                        before.push({
+                            name: document.getElementById('name').value,
+                            surname: document.getElementById('surname').value, 
+                        })
+                    }
+                    objectStore.delete('P').onsuccess = function() {
+                        const req = objectStore.add({
+                            key: 'P',
+                            data: before,
+                        })
+                        req.onsuccess = function() {
+                            objectStore.get('P').onsuccess = function(e) {
+                                document.getElementById('log').innerHTML = '';
+                                e.target.result.data.forEach(function({name: name, surname: surname}) {
+                                    document.getElementById('log').innerHTML += name + ' ' + surname + ', '
+                                })
+                            }
+                        }
+                    }
+                };
+                
+            }
+            document.getElementById('delete').onclick = function() {
+                const transaction = db.transaction(['customers'], 'readwrite')
+                const objectStore = transaction.objectStore('customers');
+                objectStore.delete('P');
+                document.getElementById('log').innerHTML = '';
+            }
+        </script>
+    </body>
+</html>
