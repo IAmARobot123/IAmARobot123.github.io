@@ -41,7 +41,13 @@
                     const objectStore = db.createObjectStore('customers', {
                         keyPath: 'key',
                     })
+                    e.target.result.data.forEach(function({name: name, surname: surname}) {
+                    document.getElementById('log').innerHTML += name + ' ' + surname + ', '
+                    })
                 } catch {
+                    e.target.result.data.forEach(function({name: name, surname: surname}) {
+                        document.getElementById('log').innerHTML += name + ' ' + surname + ', '
+                    })
                 }
             }
             function updateHandler() {
@@ -69,12 +75,10 @@
                         req.onsuccess = function() {
                             objectStore.get('P').onsuccess = function(e) {
                                 document.getElementById('log').innerHTML = '';
-                                e.target.result.data.forEach(function({name: name, surname: surname}) {
-                                    document.getElementById('log').innerHTML += name + ' ' + surname + ', '
-                                })
                             }
                         }
                     }
+                    
                 };
                 
             }
