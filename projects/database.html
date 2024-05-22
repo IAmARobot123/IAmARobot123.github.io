@@ -12,11 +12,11 @@
                     parent.postMessage({
                         header: 'get',
                         value: localStorage.getItem(data.name)
-                    })
+                    }, '*')
                 } else if(data.header == 'post') {
                     localStorage.setItem(data.name, data.value)
                 } else {
-                    alert('Received message but couldn\'t read')
+                    console.error('received message but couldn\'t read. Sorry')
                 }
             })
         </script>
