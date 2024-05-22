@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>  
+            window.addEventListener('message', function(e) {
+                const data = e.data;
+                if(data.header == 'get') {
+                    parent.postMessage({
+                        header: 'get',
+                        value: localStorage.getItem(data.name)
+                    })
+                } else if(data.header == 'post') {
+                    localStorage.setItem(data.name, data.value)
+                } else {
+                    alert('Received message but couldn\'t read')
+                }
+            })
+        </script>
+    </body>
+</html>
