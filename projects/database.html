@@ -5,9 +5,9 @@
     </head>
     <body>
         <script>  
-            
+            console.log(getCookie('yummy-cookie'))
             function setCookie(cookie, value) {
-                const cookieText = cookie + '=' + value + ';max-age=126144000'; // 126144000
+                const cookieText = cookie + '=' + value + ';Max-Age=126144000'; // 126144000
                 document.cookie = cookieText;
             }
             function getCookie(cookie) {
@@ -35,5 +35,5 @@
                 }
             })
         </script>
-    </body>
+
 </html>
