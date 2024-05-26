@@ -11,7 +11,8 @@
                 document.cookie = cookieText;
             }
             function getCookie(cookie) {
-                const cookieList = document.cookie.split(';');
+                const cookieText = document.cookie.replaceAll(' ', '')
+                const cookieList = cookieText.split(';');
                 const found = cookieList.find(element => element.split('=')[0] == cookie);
                 if(found) {
                     return found.split('=')[1];
