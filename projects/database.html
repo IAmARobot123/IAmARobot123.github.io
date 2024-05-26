@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <title>DB</title>
     </head>
     <body>
         <script>  
             console.log(getCookie('yummy-cookie'))
             function setCookie(cookie, value) {
-                const cookieText = cookie + '=' + value + ';Max-Age=126144000;SameSite=None'; // 126144000
+                const cookieText = cookie + '=' + value + ';Max-Age=126144000;SameSite=None;Secure'; // 126144000
                 document.cookie = cookieText;
             }
             function getCookie(cookie) {
