@@ -5,16 +5,30 @@
     </head>
     <body>
         <script>  
+            
+            function setCookie(cookie, value) {
+                const cookieText = cookie + '=' + value + ';sameSite=None;max-age=126144000'; // 126144000
+                document.cookie = cookieText;
+            }
+            function getCookie(cookie) {
+                const cookieList = document.cookie.split(';');
+                const found = cookieList.find(element => element.split('=')[0] == cookie);
+                if(found) {
+                    return found.split('=')[1];
+                } else {
+                    return null;
+                }
+            }
             window.addEventListener('message', function(e) {
                 console.warn('data received')
                 const data = e.data;
                 if(data.header == 'get') {
                     parent.postMessage({
                         header: 'get',
-                        value: localStorage.getItem(data.name)
+                        value: getCookie(data.name)
                     }, '*')
                 } else if(data.header == 'post') {
-                    localStorage.setItem(data.name, data.value)
+                    setCookie(data.name, data.value)
                 } else {
                     console.error('received message but couldn\'t read. Sorry')
                 }
