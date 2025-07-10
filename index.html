@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>IAmARobot123</title>
-  </head>
-  <body>
-    <h1>I</h1>
-    <h1>AM</h1>
-    <h1>A</h1>
-    <h1>ROBOT</h1>
-    <h1>123</h1>
-    <p>index zone</p>
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <title>Pocket AI Simulator</title>
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+        <div id="main-container">
+            <div id="chat">
+                <input type="text" id="input">
+                <button id="button">Send</button>
+            </div>
+            <div id="simulator">
+                <h2>Simulator</h2>
+                <h3>Living room</h3>
+                <ul> 
+                    <li class="element" title="The living room's light">lights: off</li>
+                    <li class="element" title="The living room's open door">door: open</li>
+                    <li class="element" title="The living room's open window">window: open</li>
+                </ul>
+                <h3>Kitchen</h3>
+                <ul> 
+                    <li class="element" title="The kitchen's lights">lights: off</li>
+                    <li class="element" title="the toaster">toaster: off</li>
+                    <li class="element" title="the kitchen's oven">oven: off</li>
+                    <li class="element" title="the kitchen's open door">door: open</li>
+                </ul>
+                <h3>Bathroom</h3>
+                <ul>
+                    <li class="element" title="The bathroom's lights">lights: off</li>
+                    <li class="element" title="The heater">heater: off</li>
+                    <li class="element" title="The bathroom's open door">door: open</li>
+                </ul>
+                <h3>Bedroom</h3>
+                <ul>
+                    <li class="element" title="The bedroom lights">lights: off</li>
+                    <li class="element" title="The bedroom closed window">window: closed</li>
+                    <li class="element" title="The bedroom open door">door: open</li>
+                </ul>
+            </div>
+        </div>
+        <script src="scripts/main.js"></script>
+    </body>
 </html>
