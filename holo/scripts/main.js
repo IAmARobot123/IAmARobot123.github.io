@@ -3,6 +3,7 @@ const background = [ ...document.getElementsByClassName('bgimagecube')];
 const moveButtons = [ ...document.getElementsByClassName('move-button')];
 
 const radiusInput = document.getElementById('radius-input');
+const opacityInput = document.getElementById('opacity-input');
 let windowTransform = [
     { direction: 0, height: 0, vh: 300, vw: 500 },
     { direction: 50, height: 0, vh: 300, vw: 500  },
@@ -15,6 +16,7 @@ let windowTransform = [
 const deg = (n) => n / 180 * Math.PI;
 let c = 500;
 let r = 0;
+let o = 0.8;
 let wheelPressed = false;
 
 document.addEventListener('mousemove', (e) => {
@@ -182,9 +184,10 @@ function loop(frame) {
         rotate3d(0, 1, 0, ${r + n * 90}deg)
         `
     }
-        
+    c = radiusInput.value;
+    o = opacityInput.value;      
     for(const n in windows) {
-        c = radiusInput.value;
+
         windows[n].style.transform = ''
         windowTransform[n].vw = windows[n].clientWidth;
         windowTransform[n].vh = windows[n].clientHeight;
@@ -195,6 +198,7 @@ function loop(frame) {
         translate3d(${-Math.sin(deg(windowTransform[n].direction + r)) * c}px, ${windowTransform[n].height}px, ${-Math.cos(deg(windowTransform[n].direction + r)) * c + 1000}px)
         rotate3d(0, 1, 0, ${windowTransform[n].direction + r}deg)
         `
+        windows[n].style.opacity = `${+o + Math.random() / 30}`
     }
     display.innerHTML = dialogues[selected];
     requestAnimationFrame(loop);

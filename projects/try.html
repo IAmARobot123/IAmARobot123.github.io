@@ -1,0 +1,24 @@
+<a href="../def.pdf" download="def.pdf" target="_blank">
+    <button>
+        Download
+    </button>
+</a>
+<script>
+    function dlpdf(fileURL)
+    {
+    if (!window.ActiveXObject) 
+        {
+            var save = document.createElement('a');
+                    
+            // alert(fileURL);
+            
+            save.href     = fileURL;
+            save.target   = '_blank';
+            save.download = fileURL || 'unknown';
+            
+            save.click()
+            
+            (window.URL || window.webkitURL).revokeObjectURL(save.href);
+        }
+    }
+</script>
